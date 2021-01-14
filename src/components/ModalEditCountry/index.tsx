@@ -47,13 +47,19 @@ const ModalEditCountry: React.FC<IModalProps> = ({
 }: IModalProps) => {
   const formRef = useRef<FormHandles>(null);
   const [countrySelected, setCountrySelected] = useState('');
-  const [dataCountry, setDataCountry] = useState<IEditCountryData | undefined>(
-    editingCountry,
-  );
+  const [dataCountry, setDataCountry] = useState<IEditCountryData>(() => {
+    if (editingCountry) {
+      return editingCountry;
+    }
+    return {} as IEditCountryData;
+  });
   console.log('OBJETO DATA', editingCountry);
 
-  const [local, setLocal] = useState(editingCountry?.local);
-  const [meta, setMeta] = useState(editingCountry?.meta);
+  const [localState, setLocalState] = useState(editingCountry?.local);
+  const [metaState, setMetaState] = useState(editingCountry?.meta);
+  const [flag, setFlag] = useState(editingCountry?.flag);
+  // const [name, setName] = useState(editingCountry.name);
+  const [translation, setTranslation] = useState(editingCountry?.translation);
 
   const handleSubmit = useCallback(
     async (data: IEditCountryData) => {
@@ -69,10 +75,12 @@ const ModalEditCountry: React.FC<IModalProps> = ({
   ): Promise<void> {
     try {
       const response = await api.put(`/add/${editingCountry?.id}`, {
-        meta,
-        local,
+        id: editingCountry?.id,
+        flag: editingCountry?.flag,
         name: editingCountry?.name,
-        flag: countrySelected,
+        translation: editingCountry?.translation,
+        meta: metaState,
+        local: localState,
       });
       console.log(response);
     } catch (err) {
@@ -83,7 +91,9 @@ const ModalEditCountry: React.FC<IModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingCountry}>
-        <h1>Editar</h1>
+        <div>
+          <h1>Editar</h1>
+        </div>
         <div>
           <Label>País</Label>
           <Select onChange={event => setCountrySelected(event.target.value)}>
@@ -91,25 +101,39 @@ const ModalEditCountry: React.FC<IModalProps> = ({
               {editingCountry?.translation}
             </option>
             {countries.map(country => (
-              <option key={country.name} value={country.name}>
+              <option
+                key={country.name}
+                value={country.name}
+                onChange={() => {
+                  setFlag(country.flag);
+                  setTranslation(country.translations);
+                }}
+              >
                 {country.translations}
               </option>
             ))}
           </Select>
         </div>
-        <Input
-          name="local"
-          value={local}
-          defaultValue={editingCountry?.local}
-          onChange={event => setLocal(event.target.value)}
-        />
-        <Input
-          name="meta"
-          placeholder="mês/ano"
-          defaultValue={editingCountry?.meta}
-          value={meta}
-          onChange={event => setMeta(event.target.value)}
-        />
+        <div>
+          <Label>Local</Label>
+          <Input
+            name="local"
+            value={localState}
+            defaultValue={editingCountry?.local}
+            onChange={event => setLocalState(event.target.value)}
+          />
+        </div>
+
+        <div>
+          <Label>Meta</Label>
+          <Input
+            name="meta"
+            placeholder="mês/ano"
+            defaultValue={editingCountry?.meta}
+            value={metaState}
+            onChange={event => setMetaState(event.target.value)}
+          />
+        </div>
 
         <button
           type="submit"

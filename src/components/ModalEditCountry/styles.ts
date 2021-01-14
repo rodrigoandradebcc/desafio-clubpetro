@@ -4,7 +4,7 @@ import { Form as Unform } from '@unform/web';
 
 export const Input = styled.input`
   height: 3rem;
-  width: 28.43rem;
+  width: 100%;
   border-radius: 7px;
   box-shadow: none;
   box-shadow: 0 0 0 0;
@@ -16,11 +16,16 @@ export const Form = styled(Unform)`
   display: flex;
   flex-direction: column;
 
+  div:first-child {
+    border-bottom: 1px solid #ababab;
+    display: flex;
+  }
+
   h1 {
     font-weight: 600;
     font-size: 36px;
     line-height: 36px;
-    margin-bottom: 40px;
+    margin-bottom: 0.62rem;
   }
 
   button {
@@ -51,10 +56,17 @@ export const Form = styled(Unform)`
       margin: 0 auto;
     }
   }
+
+  div + div {
+    padding-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    /* padding-bottom: 16px; */
+  }
 `;
 
 export const Label = styled.label`
-  color: #ffffff;
+  color: #000000;
   padding-left: 0.12rem;
   font-family: Roboto;
   font-style: normal;
@@ -66,7 +78,7 @@ export const Label = styled.label`
 
 export const Select = styled.select`
   padding: 0.5em 3.5em 0.5em 1em;
-  width: 18.93rem;
+  width: 100%;
   height: 3rem;
   border-color: #fff;
   /* border: 10px solid #cad5df; */
