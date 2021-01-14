@@ -88,13 +88,15 @@ const ModalEditCountry: React.FC<IModalProps> = ({
             ))}
           </Select>
         </div>
-        <Label>Local</Label>
-        <Input
-          name="local"
-          defaultValue={editingCountry?.local}
-          ref={inputRef}
-        />
-        <div />
+
+        <div>
+          <Label>Local</Label>
+          <Input
+            name="local"
+            defaultValue={editingCountry?.local}
+            ref={inputRef}
+          />
+        </div>
 
         <div>
           <Label>Meta</Label>

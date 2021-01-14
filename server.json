@@ -1,20 +1,44 @@
 {
   "add": [
     {
-      "name": "Anguilla",
-      "local": "eaaea",
-      "meta": "25/2223",
-      "flag": "https://restcountries.eu/data/aia.svg",
-      "translation": "Anguila",
-      "id": 2
+      "name": "Brazil",
+      "local": "Cidade B",
+      "meta": "12/2026",
+      "flag": "https://restcountries.eu/data/bra.svg",
+      "translation": "Brasil",
+      "id": 4
     },
     {
-      "name": "Anguilla",
-      "local": "eaaea",
-      "meta": "25/2223",
-      "flag": "https://restcountries.eu/data/aia.svg",
-      "translation": "Anguila",
-      "id": 3
+      "name": "Bolivia (Plurinational State of)",
+      "local": "Cidade B",
+      "meta": "12/2025",
+      "flag": "https://restcountries.eu/data/bol.svg",
+      "translation": "Bolívia",
+      "id": 5
+    },
+    {
+      "name": "Iraq",
+      "local": "Cidade B",
+      "meta": "12/2026",
+      "flag": "https://restcountries.eu/data/irq.svg",
+      "translation": "Iraque",
+      "id": 6
+    },
+    {
+      "name": "Saint Barthélemy",
+      "local": "Cidade B",
+      "meta": "12/2027",
+      "flag": "https://restcountries.eu/data/blm.svg",
+      "translation": "São Bartolomeu",
+      "id": 7
+    },
+    {
+      "name": "Vanuatu",
+      "local": "Cidade B",
+      "meta": "10/2027",
+      "flag": "https://restcountries.eu/data/vut.svg",
+      "translation": "Vanuatu",
+      "id": 8
     }
   ]
 }
