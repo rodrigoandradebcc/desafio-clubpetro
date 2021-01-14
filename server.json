@@ -1,0 +1,12 @@
+{
+  "add": [
+    {
+      "name": "Antarctica",
+      "local": "Cidade B",
+      "meta": "25/2223",
+      "flag": "https://restcountries.eu/data/ata.svg",
+      "translation": "Antártida",
+      "id": 1
+    }
+  ]
+}
