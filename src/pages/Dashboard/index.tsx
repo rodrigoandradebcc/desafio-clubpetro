@@ -56,8 +56,8 @@ const Dashboard: React.FC = () => {
   const [databaseCountries, setDatabaseCountries] = useState<ICountryJson[]>(
     [],
   );
-  const [local, setLocal] = useState('');
-  const [meta, setMeta] = useState('');
+  const [local, setLocal] = useState(editingCountry.local);
+  const [meta, setMeta] = useState(editingCountry.meta);
 
   useEffect(() => {
     api.get('/all').then(response => {
@@ -98,11 +98,10 @@ const Dashboard: React.FC = () => {
     await loadCountries();
   }
 
-  async function handleUpdateCountry(
-    country: Omit<ICountryJson, 'id' | 'available'>,
-  ): Promise<void> {
+  async function handleUpdateCountry(country: ICountryJson): Promise<void> {
     try {
-      const response = await api.put(`/add/${editingCountry.id}`, {
+      console.log('UPDATE', country);
+      const response = await apiJson.put(`/add/${editingCountry.id}`, {
         ...editingCountry,
         ...country,
       });
@@ -135,7 +134,16 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  function handleEditCountry(country: ICountryJson): void {
+    // TODO SET THE CURRENT EDITING FOOD ID IN THE STATE
+
+    setEditingCountry(country);
+    // handleUpdateCountry(country);
+    toggleEditModal();
+  }
+
   function toggleModal(countrySel: ICountryJson): void {
+    console.log('SEL', countrySel); // chegando na dash
     setModalOpen(!modalOpen);
     setCountrySelectedEditForm(countrySel);
   }
@@ -152,15 +160,14 @@ const Dashboard: React.FC = () => {
         <img src={logoImg} alt="Logo" />
       </Header>
 
-      <ModalEditCountry
-        isOpen={modalOpen}
-        setIsOpen={toggleEditModal}
-        handleUpdateCountry={handleUpdateCountry}
-        editingCountry={countrySelectedEditForm}
-        countries={countries}
-      />
-
       <Container>
+        <ModalEditCountry
+          isOpen={modalOpen}
+          setIsOpen={toggleEditModal}
+          handleUpdateCountry={handleUpdateCountry}
+          editingCountry={countrySelectedEditForm}
+          countries={countries}
+        />
         <SubNav>
           <Form onSubmit={handleAddCrountry}>
             <div>
@@ -209,6 +216,7 @@ const Dashboard: React.FC = () => {
                 openModal={() => toggleModal(country)}
                 key={country.id}
                 country={country}
+                handleEditCountry={handleEditCountry}
                 handleDeleteCountry={handleDeleteCountry}
               />
             ))}

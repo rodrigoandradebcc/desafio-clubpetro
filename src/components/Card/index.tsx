@@ -16,6 +16,7 @@ interface ICountry {
 interface IProps {
   country: ICountry;
   handleDeleteCountry: (id: number) => {};
+  handleEditCountry: (country: ICountry) => void;
   openModal: (country: ICountry) => void;
 }
 
@@ -23,7 +24,13 @@ const Card: React.FC<IProps> = ({
   country,
   handleDeleteCountry,
   openModal,
+  handleEditCountry,
 }: IProps) => {
+  function setEditingCountry(): void {
+    handleEditCountry(country);
+    openModal(country);
+  }
+
   return (
     <Container>
       <header>
@@ -32,7 +39,11 @@ const Card: React.FC<IProps> = ({
           <h2>{country.translation}</h2>
         </div>
         <IconsContainer>
-          <button type="button" onClick={() => openModal(country)}>
+          <button
+            type="button"
+            onClick={() => setEditingCountry()}
+            data-testid={`edit-food-${country.id}`}
+          >
             <HiPencil size={20} />
           </button>
 
