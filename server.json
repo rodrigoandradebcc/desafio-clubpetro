@@ -35,7 +35,7 @@
     {
       "name": "United States of America",
       "local": "Disney",
-      "meta": "09/2029",
+      "meta": "09/2028",
       "flag": "https://restcountries.eu/data/usa.svg",
       "translation": "Estados Unidos",
       "id": 29
@@ -75,7 +75,7 @@
     {
       "name": "Brazil",
       "local": "Rio de Janeiro",
-      "meta": "08/2038",
+      "meta": "05/2040",
       "flag": "https://restcountries.eu/data/bra.svg",
       "translation": "Brasil",
       "id": 34

@@ -104,7 +104,6 @@ const Dashboard: React.FC = () => {
     });
     setMeta('');
     setLocal('');
-    setCountrySelected('');
     formRef.current?.reset();
     formRef.current?.clearField('local');
     formRef.current?.clearField('meta');
