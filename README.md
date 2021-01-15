@@ -16,4 +16,11 @@ Em outro terminal, execute para executar o projeto:
 
 Abra [http://localhost:3000](http://localhost:3000) para ver no browser.
 
-![alt](https://user-images.githubusercontent.com/3511851/104783421-be8a1a80-5764-11eb-823b-8b0319bf64e4.png)
+![alt](https://user-images.githubusercontent.com/3511851/104784161-75d36100-5766-11eb-87da-210a63198f89.png)
+
+## 🔨 Ferramentas Utilizadas
+### Clone este repositório
+`git clone https://github.com/odrigoandradebcc/softwrap-web`
+
+### Acesse a pasta do projeto no seu terminal/cmd
+`cd softwrap-web`
