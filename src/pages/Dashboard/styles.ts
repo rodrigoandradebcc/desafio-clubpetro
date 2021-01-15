@@ -115,7 +115,7 @@ export const Label = styled.label`
 export const Select = styled.select`
   padding: 0.5em 3.5em 0.5em 1em;
   width: 18.93rem;
-  height: 3rem;
+  height: 3.25rem;
   border-color: #fff;
   /* border: 10px solid #cad5df; */
   border-radius: 7px;
