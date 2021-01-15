@@ -22,7 +22,7 @@ export const Container = styled.div`
     flex: 1;
     background: transparent;
     border: 0;
-    color: #b7b7cc;
+    color: #fffff;
     &::placeholder {
       color: #b7b7cc;
     }

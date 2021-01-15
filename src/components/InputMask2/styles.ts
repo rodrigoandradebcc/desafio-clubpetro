@@ -9,29 +9,22 @@ export const Container = styled.div<IDashProps>`
   align-items: center;
   background: #fff;
   border-radius: 8px;
-  padding: 0 24px;
-  width: 100%;
-  height: 3.25rem;
+  padding: 18px 24px;
 
+  width: 100%;
   font-size: 16px;
-  & + div {
-    margin-top: 24px;
-  }
 
   ${props =>
     props.width === 'large' &&
     css`
-      width: 28.5rem;
+      @media screen and (max-width: 1300px) {
+        width: 90vw;
+      }
     `}
 
-  @media screen and (max-width: 1300px) {
-    ${props =>
-      props.width === 'large' &&
-      css`
-        width: 90vw;
-      `}
+  & + div {
+    margin-top: 24px;
   }
-
   h1 {
     margin-bottom: 40px;
     font-weight: 600;

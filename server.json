@@ -1,44 +1,76 @@
 {
   "add": [
     {
+      "name": "Argentina",
+      "local": "Buenos Aires",
+      "meta": "06/2025",
+      "flag": "https://restcountries.eu/data/arg.svg",
+      "translation": "Argentina",
+      "id": 16
+    },
+    {
+      "name": "Bolivia (Plurinational State of)",
+      "local": "Salar de Uyuni",
+      "meta": "04/2024",
+      "flag": "https://restcountries.eu/data/bol.svg",
+      "translation": "Bolívia",
+      "id": 17
+    },
+    {
       "name": "Brazil",
-      "local": "São Paulo",
-      "meta": "12/2030",
+      "local": "Balneário Camboriu",
+      "meta": "07/2022",
       "flag": "https://restcountries.eu/data/bra.svg",
       "translation": "Brasil",
-      "id": 4
+      "id": 26
     },
     {
-      "name": "Mayotte",
-      "local": "Cidade B",
-      "meta": "12/2026",
-      "flag": "https://restcountries.eu/data/irq.svg",
-      "translation": "Iraque",
-      "id": 6
+      "name": "Italy",
+      "local": "Veneza",
+      "meta": "09/2027",
+      "flag": "https://restcountries.eu/data/ita.svg",
+      "translation": "Itália",
+      "id": 28
     },
     {
-      "name": "Saint Barthélemy",
-      "local": "Cidade Teste",
-      "meta": "12/2031",
-      "flag": "https://restcountries.eu/data/blm.svg",
-      "translation": "São Bartolomeu",
-      "id": 7
+      "name": "United States of America",
+      "local": "Disney",
+      "meta": "09/2026",
+      "flag": "https://restcountries.eu/data/usa.svg",
+      "translation": "Estados Unidos",
+      "id": 29
     },
     {
-      "name": "Vanuatu",
-      "local": "Cidade B",
-      "meta": "10/2028",
-      "flag": "https://restcountries.eu/data/vut.svg",
-      "translation": "Vanuatu",
-      "id": 8
+      "name": "United States of America",
+      "local": "Nova York",
+      "meta": "05/2035",
+      "flag": "https://restcountries.eu/data/usa.svg",
+      "translation": "Estados Unidos",
+      "id": 30
     },
     {
-      "name": "Aruba",
-      "local": "Cidade A",
-      "meta": "05/2024",
-      "flag": "https://restcountries.eu/data/abw.svg",
-      "translation": "Aruba",
-      "id": 9
+      "name": "United Arab Emirates",
+      "local": "Dubai",
+      "meta": "01/2024",
+      "flag": "https://restcountries.eu/data/are.svg",
+      "translation": "Emirados árabes Unidos",
+      "id": 31
+    },
+    {
+      "name": "Peru",
+      "local": "Machu Picchu",
+      "meta": "04/2034",
+      "flag": "https://restcountries.eu/data/per.svg",
+      "translation": "Peru",
+      "id": 32
+    },
+    {
+      "name": "Italy",
+      "local": "Roma",
+      "meta": "08/2041",
+      "flag": "https://restcountries.eu/data/ita.svg",
+      "translation": "Itália",
+      "id": 33
     }
   ]
 }

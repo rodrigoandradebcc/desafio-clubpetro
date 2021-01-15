@@ -6,6 +6,7 @@ import Modal from '../Modal';
 import Input from '../Input';
 import InputMask from '../InputMask';
 import { Form, Label } from './styles';
+import { useToast } from '../../hooks/toast';
 
 interface ICountry {
   id: number;
@@ -48,19 +49,18 @@ const ModalEditCountry: React.FC<IModalProps> = ({
   countries,
 }: IModalProps) => {
   const formRef = useRef<FormHandles>(null);
-
-  // const [dataCountry, setDataCountry] = useState<IEditCountryData>(() => {
-  //   if (editingCountry) {
-  //     return editingCountry;
-  //   }
-  //   return {} as IEditCountryData;
-  // });
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: IEditCountryData) => {
-      console.log('MODAL', data);
       handleUpdateCountry(data);
       setIsOpen();
+
+      addToast({
+        type: 'success',
+        title: 'Atualizado realizado com sucesso',
+        description: 'Seu lugar para conhecer foi atualizado com sucesso',
+      });
     },
     [handleUpdateCountry],
   );
@@ -79,12 +79,7 @@ const ModalEditCountry: React.FC<IModalProps> = ({
 
         <div>
           <Label>Meta</Label>
-          <InputMask
-            mask="99/9999"
-            name="meta"
-            placeholder="mês/ano"
-            // defaultValue={editingCountry?.meta}
-          />
+          <InputMask mask="99/9999" name="meta" placeholder="mês/ano" />
         </div>
 
         <button type="submit" data-testid="edit-country-button">

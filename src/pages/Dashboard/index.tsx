@@ -1,16 +1,26 @@
-import React, { FormEvent, useCallback, useEffect, useState } from 'react';
+import React, {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { FormHandles } from '@unform/core';
 import api from '../../services/api';
 import apiJson from '../../services/apiJson';
+import InputMask2 from '../../components/InputMask2';
+import Input from '../../components/Input';
+import { useToast } from '../../hooks/toast';
 
 import {
   Header,
   Container,
+  Content,
   SubNav,
   Label,
   Select,
-  Input,
-  Input2,
   ButtonAdd,
+  ContentHeader,
   CardsContainer,
   Form,
 } from './styles';
@@ -39,6 +49,7 @@ interface ICountryJson {
 
 const Dashboard: React.FC = () => {
   const [countrySelected, setCountrySelected] = useState('');
+  const { addToast } = useToast();
   const [
     countrySelectedEditForm,
     setCountrySelectedEditForm,
@@ -53,6 +64,7 @@ const Dashboard: React.FC = () => {
   );
   const [local, setLocal] = useState(editingCountry.local);
   const [meta, setMeta] = useState(editingCountry.meta);
+  const formRef = useRef<FormHandles>(null);
 
   useEffect(() => {
     api.get('/all').then(response => {
@@ -78,10 +90,16 @@ const Dashboard: React.FC = () => {
   async function handleAddCrountry(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
-    event.preventDefault();
+    // event.preventDefault();
 
     const data = countries.filter(item => item.name === countrySelected);
     const { flag, translations: translation } = data[0];
+
+    addToast({
+      type: 'success',
+      title: 'Cadastro realizado com sucesso',
+      description: `${local}/${translation} adicionado com sucesso`,
+    });
 
     await apiJson.post('/add', {
       name: countrySelected,
@@ -90,12 +108,19 @@ const Dashboard: React.FC = () => {
       flag,
       translation,
     });
+    setMeta('');
+    setLocal('');
+    setCountrySelected('');
+    formRef.current?.reset();
+    formRef.current?.clearField('local');
+    formRef.current?.clearField('meta');
+    formRef.current?.clearField('name');
+
     await loadCountries();
   }
 
   async function handleUpdateCountry(country: ICountryJson): Promise<void> {
     try {
-      console.log('UPDATE', country);
       const response = await apiJson.put(`/add/${editingCountry.id}`, {
         ...editingCountry,
         ...country,
@@ -120,6 +145,12 @@ const Dashboard: React.FC = () => {
   async function handleDeleteCountry(id: number): Promise<void> {
     try {
       await apiJson.delete(`/add/${id}`);
+
+      addToast({
+        type: 'success',
+        title: 'Excluído com sucesso',
+        description: `Lugar deletado com sucesso`,
+      });
 
       setDatabaseCountries(
         databaseCountries.filter(country => country.id !== id),
@@ -146,71 +177,76 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header>
-        <img src={logoImg} alt="Logo" />
-      </Header>
-
       <Container>
-        <ModalEditCountry
-          isOpen={modalOpen}
-          setIsOpen={toggleEditModal}
-          handleUpdateCountry={handleUpdateCountry}
-          editingCountry={countrySelectedEditForm}
-          countries={countries}
-        />
-        <SubNav>
-          <Form onSubmit={handleAddCrountry}>
-            <div>
-              <Label>País</Label>
-              <Select
-                onChange={event => setCountrySelected(event.target.value)}
-              >
-                <option value="" disabled selected>
-                  Selecione ...
-                </option>
-                {countries.map(country => (
-                  <option key={country.name} value={country.name}>
-                    {country.translations}
-                  </option>
-                ))}
-              </Select>
-            </div>
-            <div>
-              <Label>Local</Label>
-              <Input
-                name="local"
-                value={local}
-                type="text"
-                placeholder="Defina o local que deseja conhecer"
-                onChange={event => setLocal(event.target.value)}
-              />
-            </div>
+        <Header>
+          <ContentHeader>
+            <img src={logoImg} alt="Logo" />
+          </ContentHeader>
+        </Header>
 
-            <div>
-              <Label>Meta</Label>
-              <Input2
-                name="meta"
-                value={meta}
-                type="text"
-                placeholder="mês/ano"
-                onChange={event => setMeta(event.target.value)}
-              />
-            </div>
-            <ButtonAdd type="submit">Adicionar</ButtonAdd>
-          </Form>
-        </SubNav>
-        <CardsContainer>
-          {databaseCountries &&
-            databaseCountries.map(country => (
-              <Card
-                openModal={() => toggleModal(country)}
-                key={country.id}
-                country={country}
-                handleEditCountry={handleEditCountry}
-                handleDeleteCountry={handleDeleteCountry}
-              />
-            ))}
-        </CardsContainer>
+        <Content>
+          <ModalEditCountry
+            isOpen={modalOpen}
+            setIsOpen={toggleEditModal}
+            handleUpdateCountry={handleUpdateCountry}
+            editingCountry={countrySelectedEditForm}
+            countries={countries}
+          />
+          <SubNav>
+            <Form onSubmit={handleAddCrountry} ref={formRef}>
+              <div>
+                <Label>País</Label>
+                <Select
+                  name="name"
+                  onChange={event => setCountrySelected(event.target.value)}
+                >
+                  <option disabled selected>
+                    Selecione ...
+                  </option>
+                  {countries.map(country => (
+                    <option key={country.name} value={country.name}>
+                      {country.translations}
+                    </option>
+                  ))}
+                </Select>
+              </div>
+              <div>
+                <Label>Local</Label>
+                <Input
+                  width="large"
+                  name="local"
+                  value={local}
+                  placeholder="Defina o local que deseja conhecer"
+                  onChange={event => setLocal(event.target.value)}
+                />
+              </div>
+
+              <div>
+                <Label>Meta</Label>
+                <InputMask2
+                  width="large"
+                  mask="99/9999"
+                  name="meta"
+                  placeholder="mês/ano"
+                  onChange={event => setMeta(event.target.value)}
+                />
+              </div>
+              <ButtonAdd type="submit">Adicionar</ButtonAdd>
+            </Form>
+          </SubNav>
+          <CardsContainer>
+            {databaseCountries &&
+              databaseCountries.map(country => (
+                <Card
+                  openModal={() => toggleModal(country)}
+                  key={country.id}
+                  country={country}
+                  handleEditCountry={handleEditCountry}
+                  handleDeleteCountry={handleDeleteCountry}
+                />
+              ))}
+          </CardsContainer>
+        </Content>
       </Container>
     </>
   );

@@ -49,7 +49,6 @@ const Card: React.FC<IProps> = ({
 
           <button type="button" onClick={() => handleDeleteCountry(country.id)}>
             <HiX size={20} />
-            {/* <img src={x} alt="x" /> */}
           </button>
         </IconsContainer>
       </header>
