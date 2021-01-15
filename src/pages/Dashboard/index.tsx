@@ -1,10 +1,4 @@
-import React, {
-  FormEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import api from '../../services/api';
 import apiJson from '../../services/apiJson';

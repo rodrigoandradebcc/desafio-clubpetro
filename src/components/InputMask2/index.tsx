@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useField } from '@unform/core';
 import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
 import ReactInputMask, { Props as InputProps } from 'react-input-mask';

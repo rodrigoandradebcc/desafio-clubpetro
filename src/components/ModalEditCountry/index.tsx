@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
 import { FiCheckSquare } from 'react-icons/fi';
 import Modal from '../Modal';
