@@ -1,4 +1,10 @@
-## Available Scripts
+## Instruções
+
+Dentro do diretório do projeto execute
+
+### yarn
+
+Para instalar as dependências
 
 Dentro do diretório do projeto execute o JSON-SERVER como o comando: 
 
