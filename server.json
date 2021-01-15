@@ -2,22 +2,14 @@
   "add": [
     {
       "name": "Brazil",
-      "local": "Cidade B",
-      "meta": "12/2026",
+      "local": "São Paulo",
+      "meta": "12/2030",
       "flag": "https://restcountries.eu/data/bra.svg",
       "translation": "Brasil",
       "id": 4
     },
     {
-      "name": "Bolivia (Plurinational State of)",
-      "local": "Cidade B",
-      "meta": "12/2025",
-      "flag": "https://restcountries.eu/data/bol.svg",
-      "translation": "Bolívia",
-      "id": 5
-    },
-    {
-      "name": "Iraq",
+      "name": "Mayotte",
       "local": "Cidade B",
       "meta": "12/2026",
       "flag": "https://restcountries.eu/data/irq.svg",
@@ -26,8 +18,8 @@
     },
     {
       "name": "Saint Barthélemy",
-      "local": "Cidade B",
-      "meta": "12/2027",
+      "local": "Cidade Teste",
+      "meta": "12/2031",
       "flag": "https://restcountries.eu/data/blm.svg",
       "translation": "São Bartolomeu",
       "id": 7
@@ -35,10 +27,18 @@
     {
       "name": "Vanuatu",
       "local": "Cidade B",
-      "meta": "10/2027",
+      "meta": "10/2028",
       "flag": "https://restcountries.eu/data/vut.svg",
       "translation": "Vanuatu",
       "id": 8
+    },
+    {
+      "name": "Aruba",
+      "local": "Cidade A",
+      "meta": "05/2024",
+      "flag": "https://restcountries.eu/data/abw.svg",
+      "translation": "Aruba",
+      "id": 9
     }
   ]
 }

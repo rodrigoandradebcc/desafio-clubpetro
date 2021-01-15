@@ -18,10 +18,6 @@ import {
 import logoImg from '../../assets/logoclubpetro.svg';
 import Card from '../../components/Card/index';
 import ModalEditCountry from '../../components/ModalEditCountry';
-// import { Container } from './styles';
-// interface Translate {
-//   br: string;
-// }
 
 interface ICountry {
   id?: string;
@@ -49,7 +45,6 @@ const Dashboard: React.FC = () => {
   ] = useState<ICountryJson>();
   const [countries, setCountries] = useState<ICountry[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editModalOpen, setEditModalOpen] = useState(false);
   const [editingCountry, setEditingCountry] = useState<ICountryJson>(
     {} as ICountryJson,
   );
@@ -135,21 +130,16 @@ const Dashboard: React.FC = () => {
   }
 
   function handleEditCountry(country: ICountryJson): void {
-    // TODO SET THE CURRENT EDITING FOOD ID IN THE STATE
-
     setEditingCountry(country);
-    // handleUpdateCountry(country);
     toggleEditModal();
   }
 
   function toggleModal(countrySel: ICountryJson): void {
-    console.log('SEL', countrySel); // chegando na dash
     setModalOpen(!modalOpen);
     setCountrySelectedEditForm(countrySel);
   }
 
   function toggleEditModal(): void {
-    // setEditModalOpen(!editModalOpen);
     setModalOpen(false);
     loadCountries();
   }

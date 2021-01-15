@@ -3,7 +3,9 @@ import React, { useCallback, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { FiCheckSquare } from 'react-icons/fi';
 import Modal from '../Modal';
-import { Form, Input, Select, Label } from './styles';
+import Input from '../Input';
+import InputMask from '../InputMask';
+import { Form, Label } from './styles';
 
 interface ICountry {
   id: number;
@@ -46,8 +48,7 @@ const ModalEditCountry: React.FC<IModalProps> = ({
   countries,
 }: IModalProps) => {
   const formRef = useRef<FormHandles>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [countrySelected, setCountrySelected] = useState('');
+
   // const [dataCountry, setDataCountry] = useState<IEditCountryData>(() => {
   //   if (editingCountry) {
   //     return editingCountry;
@@ -70,41 +71,19 @@ const ModalEditCountry: React.FC<IModalProps> = ({
         <div>
           <h1>Editar</h1>
         </div>
-        <div>
-          <Label>País</Label>
-          <Select
-            name="name"
-            onChange={event => {
-              setCountrySelected(event.target.value);
-            }}
-          >
-            <option value={editingCountry?.translation} selected>
-              {editingCountry?.translation}
-            </option>
-            {countries.map(country => (
-              <option key={country.name} value={country.name}>
-                {country.translations}
-              </option>
-            ))}
-          </Select>
-        </div>
 
         <div>
           <Label>Local</Label>
-          <Input
-            name="local"
-            defaultValue={editingCountry?.local}
-            ref={inputRef}
-          />
+          <Input name="local" />
         </div>
 
         <div>
           <Label>Meta</Label>
-          <Input
+          <InputMask
+            mask="99/9999"
             name="meta"
             placeholder="mês/ano"
-            defaultValue={editingCountry?.meta}
-            ref={inputRef}
+            // defaultValue={editingCountry?.meta}
           />
         </div>
 
