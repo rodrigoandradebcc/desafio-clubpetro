@@ -19,8 +19,16 @@ Abra [http://localhost:3000](http://localhost:3000) para ver no browser.
 ![alt](https://user-images.githubusercontent.com/3511851/104784161-75d36100-5766-11eb-87da-210a63198f89.png)
 
 ## 🔨 Ferramentas Utilizadas
-### Clone este repositório
-`git clone https://github.com/odrigoandradebcc/softwrap-web`
+### - ReactJs
+### - Typescript
+### - EsLint
+### - Prettier
+### - Axios
+### - Json Server
+### - Styled-Components
+### - React-Router-Dom
+### - React Spring
+### - Unform
+### - React Icons
 
-### Acesse a pasta do projeto no seu terminal/cmd
-`cd softwrap-web`
+
